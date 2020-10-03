@@ -1,0 +1,2 @@
+build_cpp:
+	g++ -I /opt/tensorflow/lib/include/ -I /usr/local/include/opencv4/ -o get_prediction get_prediction.cpp -L /opt/tensorflow/lib/ -ltensorflow_cc -ltensorflow_framework -L /opt/opencv2/opencv430/build/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
