@@ -32,6 +32,17 @@ docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detecti
 make build_cpp
 ```
 
+directory structure
+
+```
+-|efficientdet_d3_coco17_tpu-32
+    |--saved_model
+        |--assets/
+        |--saved_model.pb
+        |-- ...
+
+```
+
 ### Predict
 
 ```
