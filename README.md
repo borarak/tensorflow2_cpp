@@ -17,18 +17,18 @@ The current config uses the following dependencies (based on Tensorflow tested b
 ### Build
 
 ```bash
-docker build . -t borarak/tensorflow2_cpp
+docker build . -t boraraktim/tensorflow2_cpp
 ```
 
 OR
 
-`docker pull borarak/tensorflow2_cpp`
+`docker pull boraraktim/tensorflow2_cpp`
 
 ### Compile
 
 ```bash
 # Start docker container
-docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detection/models/ borarak/tensorflow2_cpp
+docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detection/models/ boraraktim/tensorflow2_cpp
 make build_cpp
 ```
 
