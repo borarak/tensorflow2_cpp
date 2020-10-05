@@ -2,6 +2,8 @@
 
 Sample example how to load a Tensorflow Object detection API v2 model and serve prediction in C++  
 
+Accompanying [Medium post here](https://medium.com/@reachraktim/using-the-new-tensorflow-2-x-c-api-for-object-detection-inference-ad4b7fd5fecc)
+
 ## Build and installation
 
 The current config uses the following dependencies (based on Tensorflow tested build). Check out [build from source configs](https://www.tensorflow.org/install/source#gpu) for more details.
