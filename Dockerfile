@@ -140,7 +140,6 @@ RUN apt-get install build-essential -y && \
 RUN mkdir -p /object_detection
 COPY get_prediction.cpp /object_detection/
 COPY saved_model_loader.h /object_detection/
-COPY Makefile /object_detection/
 COPY *.jpg /object_detection/
 COPY CMakeLists.txt /object_detection
 COPY include/saved_model_loader.h /object_detection/include/
