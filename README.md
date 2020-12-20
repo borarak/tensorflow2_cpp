@@ -16,7 +16,7 @@ The current config uses the following dependencies (based on Tensorflow tested b
 5. Protobuf 3.9.2
 6. OpenCV 4.3.0 (required only for the example)
 
-### Build
+### Build Docker image
 
 ```bash
 docker build . -t boraraktim/tensorflow2_cpp
@@ -26,29 +26,48 @@ OR
 
 `docker pull boraraktim/tensorflow2_cpp`
 
-### Compile
+### Compile source
+
+1.  Start container
 
 ```bash
-# Start docker container
 docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detection/models/ boraraktim/tensorflow2_cpp
-make build_cpp
 ```
+
+2. Download the object detection model from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md. We use the [efficientdet_d3_coco17_tpu-32](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz) for this example and unpack it to `/object_detection/models`
 
 directory structure
 
 ```
--|efficientdet_d3_coco17_tpu-32
-    |--saved_model
-        |--assets/
-        |--saved_model.pb
-        |-- ...
+-|/object_detection/models/
+	-|efficientdet_d3_coco17_tpu-32
+    	|--saved_model
+        	|--assets/
+        	|--saved_model.pb
+        	|-- ...
 
+```
+
+3. Build the project using cmake
+
+```bash
+mkdir build
+cd build && cmake ..
+make
 ```
 
 ### Predict
 
 ```
 ./get_prediction <path/to/saved_model> <path/to/image.jpg> <path/to/output.jpg>
+```
+
+Example,
+
+From `build` dir, do
+
+```bash
+./get_prediction ../models/efficientdet_d3_coco17_tpu-32/saved_model/ ../test-image-anoir-chafik-2_3c4dIFYFU-unsplash.jpg ../sample_prediction.jpg
 ```
 
 ![sample_prediction_doggies.jpg](./sample_prediction.jpg)
