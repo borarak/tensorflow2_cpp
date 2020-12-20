@@ -28,9 +28,9 @@ OR
 
 ### Compile source
 
-1. Download the object detection model from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md. We use the [efficientdet_d3_coco17_tpu-32](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz) for this example and unpack it.
+1. Download the object detection model from [TF object detection model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md). We use the [efficientdet_d3_coco17_tpu-32](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz) for this example and unpack it.
 
-2.  Start container and mount teh model volume
+2.  Start container and mount the model volume
 
 ```bash
 docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detection/models/ boraraktim/tensorflow2_cpp
