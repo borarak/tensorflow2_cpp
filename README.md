@@ -28,32 +28,30 @@ OR
 
 ### Compile source
 
-1.  Start container
+1. Download the object detection model from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md. We use the [efficientdet_d3_coco17_tpu-32](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz) for this example and unpack it.
+
+2.  Start container and mount teh model volume
 
 ```bash
 docker run --gpus all -it --rm -v efficientdet_d3_coco17_tpu-32/:/object_detection/models/ boraraktim/tensorflow2_cpp
 ```
-
-2. Download the object detection model from https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md. We use the [efficientdet_d3_coco17_tpu-32](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d3_coco17_tpu-32.tar.gz) for this example and unpack it to `/object_detection/models`
-
 directory structure
 
 ```
 -|/object_detection/models/
-	-|efficientdet_d3_coco17_tpu-32
+    -|efficientdet_d3_coco17_tpu-32
     	|--saved_model
-        	|--assets/
-        	|--saved_model.pb
-        	|-- ...
-
+            |--assets/
+            |--saved_model.pb
+            |-- ...
 ```
 
 3. Build the project using cmake
 
 ```bash
-mkdir build
-cd build && cmake ..
-make
+root@8122f3e1dc5b:/object_detection# mkdir build
+root@8122f3e1dc5b:/object_detection# cd build && cmake ..
+root@8122f3e1dc5b:/object_detection/build# make
 ```
 
 ### Predict
@@ -64,10 +62,9 @@ make
 
 Example,
 
-From `build` dir, do
 
 ```bash
-./get_prediction ../models/efficientdet_d3_coco17_tpu-32/saved_model/ ../test-image-anoir-chafik-2_3c4dIFYFU-unsplash.jpg ../sample_prediction.jpg
+root@8122f3e1dc5b:/object_detection/build# ./get_prediction ../models/efficientdet_d3_coco17_tpu-32/saved_model/ ../test-image-anoir-chafik-2_3c4dIFYFU-unsplash.jpg ../sample_prediction.jpg
 ```
 
 ![sample_prediction_doggies.jpg](./sample_prediction.jpg)
